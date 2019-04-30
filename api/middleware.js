@@ -1,11 +1,13 @@
 const express = require('express');
 
 module.exports = {
-  hasName,
+  has,
 }
 
-function hasName(req, res, next) {
-  !req.body.name
-  ? res.status(400).json({ error: 'Please provide a name for the zoo.' })
-  : next();
+function has(prop) {
+  return function(req, res, next) {
+    !req.body[prop]
+    ? res.status(400).json({ error: `Please provide a ${prop} for the entry you're creating.` })
+    : next();
+  }
 }

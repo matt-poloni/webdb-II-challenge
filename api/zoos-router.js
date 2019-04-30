@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', mw.hasName, (req, res) => {
+router.post('/', mw.has('name'), (req, res) => {
   db.post(req.body)
     .then(id => {
       res.status(201).json(id);
