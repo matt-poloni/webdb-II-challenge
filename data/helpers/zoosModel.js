@@ -1,4 +1,5 @@
 const db = require('../dbConfig');
+const tbl = 'zoos';
 
 module.exports = {
   get,
@@ -9,18 +10,18 @@ module.exports = {
 
 function get(id) {
   return id
-    ? db('zoos').where({id}).first()
-    : db('zoos');
+    ? db(tbl).where({id}).first()
+    : db(tbl);
 }
 
 function post(zoo) {
-  return db('zoos').insert(zoo);
+  return db(tbl).insert(zoo);
 }
 
 function put(id, changes) {
-  return db('zoos').where({id}).update(changes);
+  return db(tbl).where({id}).update(changes);
 }
 
 function del(id) {
-  return db('zoos').where({id}).del();
+  return db(tbl).where({id}).del();
 }
