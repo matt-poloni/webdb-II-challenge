@@ -15,7 +15,7 @@ function get(id) {
 }
 
 function post(bear) {
-  return db(tbl).insert(bear);
+  return db(tbl).insert(bear).first();
 }
 
 function put(id, changes) {
