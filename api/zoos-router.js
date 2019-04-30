@@ -3,10 +3,10 @@ const router = require('express').Router();
 const knexConfig = require('../knexfile');
 
 const db = knex(knexConfig.development);
-const zoos = db('zoos');
+// const zoos = db('zoos');
 
 router.get('/', (req, res) => {
-  zoos
+  db('zoos')
     .then(zoos => {
       res.status(200).json(zoos);
     })
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
     return res.status(400).json({ error: "Please include a name for the zoo." })
   }
 
-  zoos
+  db('zoos')
     .insert(req.body)
     .then(id => {
       res.status(201).json(id);
@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  zoos
+  db('zoos')
     .where({ id: req.params.id })
     .first()
     .then(zoo => {
@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  zoos
+  db('zoos')
     .where({ id: req.params.id })
     .update(req.body)
     .then(count => {
@@ -53,6 +53,18 @@ router.put('/:id', (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ error: "Could not update the zoo at the specified ID." });
+    })
+});
+
+router.delete('/:id', (req, res) => {
+  db('zoos')
+    .where({ id: req.params.id })
+    .del()
+    .then(count => {
+      res.status(200).json(count);
+    })
+    .catch(err => {
+      res.status(500).json({ error: "Could not delete the zoo at the specified ID." });
     })
 });
 
