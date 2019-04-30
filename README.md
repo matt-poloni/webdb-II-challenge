@@ -37,7 +37,7 @@ The included database has a _zoos_ table with the following schema:
 
 - [x] Ensure the client passes a `name` property in the request body. If there's an error, respond with an appropriate status code, and send a JSON response of the form `{ error: "Some useful error message" }`.
 
-Return the `id` of the inserted zoo and a 201 status code.
+- [x] Return the `id` of the inserted zoo and a 201 status code.
 
 ### `GET /api/zoos`
 
@@ -45,7 +45,7 @@ Return the `id` of the inserted zoo and a 201 status code.
 
 ### `GET /api/zoos/:id`
 
-When the client makes a `GET` request to `/api/zoos/:id`, find the _zoo_ associated with the given `id`. Remember to handle errors and send the correct status code.
+- [x] When the client makes a `GET` request to `/api/zoos/:id`, find the _zoo_ associated with the given `id`. Remember to handle errors and send the correct status code.
 
 ### DELETE /api/zoos/:id
 

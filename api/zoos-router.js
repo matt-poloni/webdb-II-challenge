@@ -30,4 +30,18 @@ router.post('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+  zoos
+    .where({ id: req.params.id })
+    .first()
+    .then(zoo => {
+      zoo
+        ? res.status(200).json(zoo)
+        : res.status(404).json({ error: "The specified ID does not exist in the zoos database." })
+    })
+    .catch(err => {
+      res.status(500).json({ error: "Could not retrieved the zoo at the specified ID." });
+    })
+});
+
 module.exports = router;
