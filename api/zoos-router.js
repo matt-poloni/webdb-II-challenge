@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
-const db = require('../data/helpers/zoosModel')
+const db = require('../data/helpers/zoosModel');
+const mw = require('./middleware');
 
 router.get('/', (req, res) => {
   db.get()
@@ -12,11 +13,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
-  if(!req.body.name) {
-    return res.status(400).json({ error: "Please include a name for the zoo." })
-  }
-
+router.post('/', mw.hasName, (req, res) => {
   db.post(req.body)
     .then(id => {
       res.status(201).json(id);
