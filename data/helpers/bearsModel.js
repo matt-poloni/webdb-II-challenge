@@ -2,6 +2,7 @@ const db = require('../dbConfig');
 const tbl = 'bears';
 
 module.exports = {
+  tbl,
   get,
   post,
   put,
@@ -15,7 +16,7 @@ function get(id) {
 }
 
 function post(bear) {
-  return db(tbl).insert(bear).first();
+  return db(tbl).insert(bear);
 }
 
 function put(id, changes) {

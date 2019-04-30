@@ -15,7 +15,7 @@ function get(id) {
 }
 
 function post(zoo) {
-  return db(tbl).insert(zoo).first();
+  return db(tbl).insert(zoo);
 }
 
 function put(id, changes) {

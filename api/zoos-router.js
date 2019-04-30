@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', mw.has('name'), (req, res) => {
+router.post('/', mw.has('name'), mw.distinct('name','zoos'), (req, res) => {
   db.post(req.body)
     .then(id => {
       res.status(201).json(id);
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', mw.distinct('name','zoos'), (req, res) => {
   db.put(req.params.id, req.body)
     .then(count => {
       res.status(200).json(count);
