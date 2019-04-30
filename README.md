@@ -57,4 +57,4 @@ The included database has a _zoos_ table with the following schema:
 
 ## Stretch Problem
 
-Add a new _bears_ table to the database and add endpoints to perform CRUD operations on it. Each bear should have an `id` and `name` property similar to the _zoos_ table.
+- [x] Add a new _bears_ table to the database and add endpoints to perform CRUD operations on it. Each bear should have an `id` and `name` property similar to the _zoos_ table.
