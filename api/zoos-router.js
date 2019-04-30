@@ -1,39 +1,33 @@
-const knex = require('knex');
 const router = require('express').Router();
-const knexConfig = require('../knexfile');
 
-const db = knex(knexConfig.development);
-// const zoos = db('zoos');
+const db = require('../data/helpers/zoosModel')
 
 router.get('/', (req, res) => {
-  db('zoos')
+  db.get()
     .then(zoos => {
       res.status(200).json(zoos);
     })
     .catch(err => {
       res.status(500).json({ error: "Could not retrieve the zoos data." });
     })
-})
+});
 
 router.post('/', (req, res) => {
   if(!req.body.name) {
     return res.status(400).json({ error: "Please include a name for the zoo." })
   }
 
-  db('zoos')
-    .insert(req.body)
+  db.post(req.body)
     .then(id => {
       res.status(201).json(id);
     })
     .catch(err => {
       res.status(500).json({ error: "Could not create the zoo." })
     })
-})
+});
 
 router.get('/:id', (req, res) => {
-  db('zoos')
-    .where({ id: req.params.id })
-    .first()
+  db.get(req.params.id)
     .then(zoo => {
       zoo
         ? res.status(200).json(zoo)
@@ -45,9 +39,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  db('zoos')
-    .where({ id: req.params.id })
-    .update(req.body)
+  db.put(req.params.id, req.body)
     .then(count => {
       res.status(200).json(count);
     })
@@ -57,9 +49,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  db('zoos')
-    .where({ id: req.params.id })
-    .del()
+  db.del(req.params.id)
     .then(count => {
       res.status(200).json(count);
     })

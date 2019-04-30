@@ -49,7 +49,7 @@ The included database has a _zoos_ table with the following schema:
 
 ### DELETE /api/zoos/:id
 
-When the client makes a `DELETE` request to this endpoint, the _zoo_ that has the provided `id` should be removed from the database.
+- [x] When the client makes a `DELETE` request to this endpoint, the _zoo_ that has the provided `id` should be removed from the database.
 
 ### PUT /api/zoos/:id
 

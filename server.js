@@ -14,5 +14,4 @@ server.use('/', (req, res) => {
   res.send("Use the '/api/zoos' endpoint")
 });
 
-
 module.exports = server;
