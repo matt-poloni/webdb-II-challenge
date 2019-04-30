@@ -53,7 +53,7 @@ When the client makes a `DELETE` request to this endpoint, the _zoo_ that has th
 
 ### PUT /api/zoos/:id
 
-When the client makes a `PUT` request to this endpoint passing an object with the changes, the _zoo_ with the provided `id` should be updated with the new information.
+- [x] When the client makes a `PUT` request to this endpoint passing an object with the changes, the _zoo_ with the provided `id` should be updated with the new information.
 
 ## Stretch Problem
 
