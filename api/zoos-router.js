@@ -36,7 +36,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.put('/:id', mw.distinct('name','zoos'), (req, res) => {
+router.put('/:id', mw.distinct('name'), (req, res) => {
   db.put(req.params.id, req.body)
     .then(count => {
       res.status(200).json(count);

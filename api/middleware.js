@@ -1,4 +1,3 @@
-const express = require('express');
 const db = require('../data/dbConfig');
 
 module.exports = function(tbl) {
@@ -10,11 +9,12 @@ module.exports = function(tbl) {
           : next();
       }
     },
-    distinct: function(prop, tbl) {
+    distinct: function(prop) {
       return async function(req, res, next) {
-        await db(tbl).where({ [prop]: req.body[prop] }).length
+        const val = req.body[prop];
+        await db(tbl).where({ [prop]: val }).length
           ? next()
-          : res.status(400).json({ error: `There is already an entry in the database with the ${prop} '${req.body[prop]}'. Please provide a distinct ${prop} for the entry you're submitting.` });
+          : res.status(400).json({ error: `There is already an entry in the database with the ${prop} '${val}'. Please provide a distinct ${prop} for the entry you're submitting.` });
       }
     }
   }
