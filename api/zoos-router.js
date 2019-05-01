@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', mw.has('name'), mw.distinct('name','zoos'), (req, res) => {
+router.post('/', mw.has('name'), mw.distinct('name'), (req, res) => {
   db.post(req.body)
     .then(id => {
       res.status(201).json(id);
