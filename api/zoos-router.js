@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const db = require('../data/helpers/zoosModel');
+const db = require('../data/helpers/genericModel')('zoos');
 const mw = require('./middleware');
 
 router.get('/', (req, res) => {

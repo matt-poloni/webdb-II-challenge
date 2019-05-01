@@ -2,7 +2,6 @@ const db = require('../dbConfig');
 const tbl = 'bears';
 
 module.exports = {
-  tbl,
   get,
   post,
   put,

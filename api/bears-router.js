@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const db = require('../data/helpers/bearsModel');
+const db = require('../data/helpers/genericModel')('bears');
 const mw = require('./middleware');
 
 router.get('/', (req, res) => {
