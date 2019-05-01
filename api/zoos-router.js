@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
-const db = require('../data/helpers/genericModel')('zoos');
-const mw = require('./middleware');
+const tbl = 'zoos';
+const db = require('../data/helpers/genericModel')(tbl);
+const mw = require('./middleware')(tbl);
 
 router.get('/', (req, res) => {
   db.get()
